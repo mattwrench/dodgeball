@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1508131919548289736
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6536297681113108292, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
+      propertyPath: m_Name
+      value: GameCharAI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239907486011309147, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -634049836, guid: d7a683a3aacf0dd4295d46d03a1a1b69, type: 3}
+    - target: {fileID: 7239907486011309147, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072581838550752852, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072581838550752852, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072581838550752852, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072581838550752852, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072581838550752852, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072581838550752852, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072581838550752852, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072581838550752852, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072581838550752852, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072581838550752852, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6536297681113108292, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1613213360760471705}
+    - targetCorrespondingSourceObject: {fileID: 6536297681113108292, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4253472298413218625}
+  m_SourcePrefab: {fileID: 100100000, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
+--- !u!1 &5645382949264055692 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6536297681113108292, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
+  m_PrefabInstance: {fileID: 1508131919548289736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1613213360760471705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5645382949264055692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84677b76617727f44a8fa6010571b4be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AIMove
+--- !u!114 &4253472298413218625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5645382949264055692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3257097a2dfa6a4bb08664fdcfde81d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AIThrow
