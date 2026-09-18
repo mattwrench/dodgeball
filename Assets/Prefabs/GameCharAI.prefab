@@ -8,10 +8,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3209575705658465941, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
+      propertyPath: Side
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3209575705658465941, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
+      propertyPath: Avatar
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6536297681113108292, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
       propertyPath: m_Name
       value: GameCharAI
       objectReference: {fileID: 0}
+    - target: {fileID: 6975361528849596865, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 48e343f7e5a63f44489b693c5eec833d, type: 2}
     - target: {fileID: 7239907486011309147, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -88,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84677b76617727f44a8fa6010571b4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AIMove
+  moveSpeed: 4.5
 --- !u!114 &4253472298413218625
 MonoBehaviour:
   m_ObjectHideFlags: 0

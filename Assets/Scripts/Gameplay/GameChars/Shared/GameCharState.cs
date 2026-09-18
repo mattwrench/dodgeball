@@ -2,13 +2,16 @@ using UnityEngine;
 
 public class GameCharState : MonoBehaviour
 {
-    private void Start()
+    public enum Team
     {
-        
+        Left, Right
     }
 
-    private void Update()
+    public enum AvatarType
     {
-        
+        Matt, Richard, Max, Eduardo, David, Jun, Ashley, Travis, MattGun
     }
+
+    public Team Side;
+    public AvatarType Avatar;
 }

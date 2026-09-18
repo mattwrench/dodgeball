@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6975361528849596865, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 88a8394d34133d14e8e7d8333293d4f6, type: 2}
     - target: {fileID: 7239907486011309147, guid: 5fe0a506b2cc54544a8153d2e8da5101, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -121,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461495d6141ba3145baea62e89311d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMove
+  moveSpeed: 4.5
 --- !u!114 &-5598208352134079179
 MonoBehaviour:
   m_ObjectHideFlags: 0
