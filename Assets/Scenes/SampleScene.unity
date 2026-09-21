@@ -875,6 +875,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 700464375061968209, guid: 5218f16fa14b8ad4db15ee16840de1c8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 700464375061968209, guid: 5218f16fa14b8ad4db15ee16840de1c8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5645382949264055692, guid: 5218f16fa14b8ad4db15ee16840de1c8, type: 3}
       propertyPath: m_Name
       value: GameCharAI
@@ -1138,6 +1146,14 @@ PrefabInstance:
     - target: {fileID: 2917064371248397673, guid: 728c56c07f6acb549a6594b538502f53, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042197300295587252, guid: 728c56c07f6acb549a6594b538502f53, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042197300295587252, guid: 728c56c07f6acb549a6594b538502f53, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
