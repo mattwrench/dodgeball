@@ -1,37 +1,56 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GameCharThrow : MonoBehaviour
 {
     public bool IsHoldingBall;
-    public bool IsThrowingBall;
-    public float ThrowTimer;
-    public float MaxThrowTime = 2.0f;
+
+    protected Vector2 AimDirection;
+    protected bool IsThrowingBall;
+
+
+    [SerializeField] private float maxThrowTimer = 2.0f;
+    [SerializeField] private float minThrowSpeed = 5f;
+    [SerializeField] private float maxThrowSpeed = 10f;
+
+    private float throwTimer;
+
+    public float ThrowCharge
+    {
+        get
+        {
+            return throwTimer / maxThrowTimer;
+        }
+    }
 
     private void Start()
     {
         IsHoldingBall = false;
-        ThrowTimer = 0;
+        throwTimer = 0;
+        AimDirection = Vector2.zero;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         // Update timer
         if (IsThrowingBall)
         {
-            ThrowTimer = Mathf.Clamp(ThrowTimer + Time.deltaTime, 0, MaxThrowTime);
+            throwTimer = Mathf.Clamp(throwTimer + Time.deltaTime, 0, maxThrowTimer);
         }
 
         // Throw ball
-        if (!IsThrowingBall && ThrowTimer > 0)
+        // Guarantee AimDirection is non-zero to avoid spawning a stationary ball
+        if (!IsThrowingBall && throwTimer > 0 && AimDirection.sqrMagnitude > 0)
         {
-            ThrowTimer = 0;
+            throwTimer = 0;
             IsHoldingBall = false;
-            SpawnBall();
+            float throwSpeed = (maxThrowSpeed - minThrowSpeed) * ThrowCharge + minThrowSpeed;
+            SpawnBall(AimDirection, throwSpeed);
         }
     }
 
-    private void SpawnBall()
+    private void SpawnBall(Vector2 dir, float speed)
     {
         // TODO
     }

@@ -33,15 +33,13 @@ public class ThrowBar : MonoBehaviour
 
     private void Update()
     {
-        if (gameCharThrow.IsThrowingBall)
+        if (gameCharThrow.ThrowCharge > 0)
         {
             canvasGroup.alpha = 1;
 
-            float throwRatio = gameCharThrow.ThrowTimer / gameCharThrow.MaxThrowTime;
-
             // Set slider length and color based on health
-            slider.value = throwRatio;
-            float fillColor = (MaxThrowColor - MinThrowColor) * throwRatio + MinThrowColor;
+            slider.value = gameCharThrow.ThrowCharge;
+            float fillColor = (MaxThrowColor - MinThrowColor) * gameCharThrow.ThrowCharge + MinThrowColor;
             fill.color = new Color(fillColor, fillColor, fillColor);
         }
 

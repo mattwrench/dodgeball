@@ -17,6 +17,16 @@
                     "priority": 0
                 },
                 {
+                    "name": "Aim",
+                    "type": "Value",
+                    "id": "9c30a8b5-1a0b-4fe0-85e3-fb814a19b2f0",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                },
+                {
                     "name": "Throw",
                     "type": "Button",
                     "id": "2f28c07a-18b2-4413-93ec-a2760a35cf39",
@@ -188,6 +198,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7627dfd8-dea9-4916-b459-60ab1c931f30",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
