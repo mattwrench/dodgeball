@@ -8,10 +8,15 @@ public class PlayerThrow : GameCharThrow
         if (inputValue.isPressed)
         {
             Debug.Log("Throw button pressed.");
+            if (IsHoldingBall)
+            {
+                IsThrowingBall = true;
+            }
         }
         else
         {
             Debug.Log("Throw button released.");
+            IsThrowingBall = false;
         }
     }
 }

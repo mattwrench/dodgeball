@@ -480,7 +480,7 @@ GameObject:
   - component: {fileID: 6136094380221557562}
   - component: {fileID: 7828066197851607809}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -779,6 +779,7 @@ GameObject:
   - component: {fileID: 1203268600726906550}
   - component: {fileID: 7094321182246651861}
   - component: {fileID: 3035682949805409194}
+  - component: {fileID: 8641326342398047144}
   m_Layer: 5
   m_Name: ThrowBar
   m_TagString: Untagged
@@ -870,6 +871,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8066f00d659c3f4683d265ff122d5e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ThrowBar
+  fill: {fileID: 7828066197851607809}
+--- !u!225 &8641326342398047144
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6574015852068706608}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7841113549822785043
 GameObject:
   m_ObjectHideFlags: 0
