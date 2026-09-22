@@ -9,10 +9,10 @@ public class GameCharThrow : MonoBehaviour
     protected Vector2 AimDirection;
     protected bool IsThrowingBall;
 
-
     [SerializeField] private float maxThrowTimer = 2.0f;
-    [SerializeField] private float minThrowSpeed = 5f;
-    [SerializeField] private float maxThrowSpeed = 10f;
+    [SerializeField] private float minThrowSpeed = 8f;
+    [SerializeField] private float maxThrowSpeed = 16f;
+    [SerializeField] private GameObject ballAlivePrefab;
 
     private float throwTimer;
 
@@ -43,15 +43,19 @@ public class GameCharThrow : MonoBehaviour
         // Guarantee AimDirection is non-zero to avoid spawning a stationary ball
         if (!IsThrowingBall && throwTimer > 0 && AimDirection.sqrMagnitude > 0)
         {
-            throwTimer = 0;
-            IsHoldingBall = false;
             float throwSpeed = (maxThrowSpeed - minThrowSpeed) * ThrowCharge + minThrowSpeed;
             SpawnBall(AimDirection, throwSpeed);
+            throwTimer = 0;
+            IsHoldingBall = false;
         }
     }
 
     private void SpawnBall(Vector2 dir, float speed)
     {
-        // TODO
+        GameObject newBall = Instantiate(ballAlivePrefab, transform.position, Quaternion.identity);
+        if (newBall.TryGetComponent<BallController>(out BallController ballController))
+        {
+            ballController.Initialize(true, dir * speed);
+        }
     }
 }

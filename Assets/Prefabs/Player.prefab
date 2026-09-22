@@ -138,3 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dae1dad1ad98b8f48ab93059e294bbb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerThrow
+  IsHoldingBall: 0
+  maxThrowTimer: 2
+  minThrowSpeed: 5
+  maxThrowSpeed: 10
+  ballAlivePrefab: {fileID: 4836416321284141309, guid: e3dc7a6bc0a03b148a4a360d58a4a897, type: 3}

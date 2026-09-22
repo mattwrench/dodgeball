@@ -113,3 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3257097a2dfa6a4bb08664fdcfde81d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AIThrow
+  IsHoldingBall: 0
+  maxThrowTimer: 2
+  minThrowSpeed: 8
+  maxThrowSpeed: 16
+  ballAlivePrefab: {fileID: 4836416321284141309, guid: e3dc7a6bc0a03b148a4a360d58a4a897, type: 3}

@@ -4,6 +4,8 @@ public class BallController : MonoBehaviour
 {
     [SerializeField] private bool isAlive;
 
+    private Rigidbody2D rb;
+
     private void Start()
     {
         
@@ -12,6 +14,15 @@ public class BallController : MonoBehaviour
     private void Update()
     {
         
+    }
+
+    // Use Initialize() rather than Start() for setup
+    // Since parameters will need to be passed
+    public void Initialize(bool isAlive, Vector2 velocity)
+    {
+        this.isAlive = isAlive;
+        rb = GetComponent<Rigidbody2D>();
+        rb.linearVelocity = velocity;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
