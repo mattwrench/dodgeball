@@ -31,26 +31,30 @@ public class GameCharAnimate : MonoBehaviour
 
     private void Update()
     {
-        // Do not change animation if gameChar is not moving
+        // Pause animation if not moving
+        // Will still need to call SetAnimation() in case ball has been thrown
         if (rb.linearVelocity.sqrMagnitude < Mathf.Epsilon)
         {
             animator.speed = 0;
-            return;
         }
 
-        // Determine direction
-        // Horizontal movement takes precedence over vertical
-        if (Mathf.Abs(rb.linearVelocity.x) >= Mathf.Abs(rb.linearVelocity.y))
-        {
-            direction = rb.linearVelocity.x > 0 ? Direction.Right : Direction.Left;
-
-        }
+        // Only change direction if gameChar is moving
         else
         {
-            direction = rb.linearVelocity.y > 0 ? Direction.Up : Direction.Down;
+            animator.speed = 1;
+
+            // Horizontal movement takes precedence over vertical
+            if (Mathf.Abs(rb.linearVelocity.x) >= Mathf.Abs(rb.linearVelocity.y))
+            {
+                direction = rb.linearVelocity.x > 0 ? Direction.Right : Direction.Left;
+
+            }
+            else
+            {
+                direction = rb.linearVelocity.y > 0 ? Direction.Up : Direction.Down;
+            }
         }
 
-        animator.speed = 1;
         SetAnimation();
     }
 
