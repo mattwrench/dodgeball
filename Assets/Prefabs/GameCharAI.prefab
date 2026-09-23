@@ -116,5 +116,5 @@ MonoBehaviour:
   IsHoldingBall: 0
   maxThrowTimer: 2
   minThrowSpeed: 8
-  maxThrowSpeed: 16
+  maxThrowSpeed: 24
   ballAlivePrefab: {fileID: 4836416321284141309, guid: e3dc7a6bc0a03b148a4a360d58a4a897, type: 3}

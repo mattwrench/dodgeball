@@ -11,7 +11,7 @@ public class GameCharThrow : MonoBehaviour
 
     [SerializeField] private float maxThrowTimer = 2.0f;
     [SerializeField] private float minThrowSpeed = 8f;
-    [SerializeField] private float maxThrowSpeed = 16f;
+    [SerializeField] private float maxThrowSpeed = 24f;
     [SerializeField] private GameObject ballAlivePrefab;
 
     private float throwTimer;
@@ -55,7 +55,7 @@ public class GameCharThrow : MonoBehaviour
         GameObject newBall = Instantiate(ballAlivePrefab, transform.position, Quaternion.identity);
         if (newBall.TryGetComponent<BallController>(out BallController ballController))
         {
-            ballController.Initialize(true, dir * speed);
+            ballController.Initialize(true, dir, speed);
         }
     }
 }

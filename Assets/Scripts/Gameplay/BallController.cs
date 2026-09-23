@@ -3,26 +3,42 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     [SerializeField] private bool isAlive;
-
+    [SerializeField] private float velocityDecayRate = 1.5f; // Units / s^2
     private Rigidbody2D rb;
+
+    private float speed;
+    private Vector2 direction;
 
     private void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        
+        // Decay velocity
+        speed = Mathf.Clamp(
+            speed - velocityDecayRate * Time.deltaTime, 
+            0, 
+            speed);
+        rb.linearVelocity = rb.linearVelocity.normalized * speed;
+
+        // Set velocity
+        rb.linearVelocity = direction * speed;
     }
 
     // Use Initialize() rather than Start() for setup
     // Since parameters will need to be passed
-    public void Initialize(bool isAlive, Vector2 velocity)
+    public void Initialize(bool isAlive, Vector2 dir, float speed)
     {
         this.isAlive = isAlive;
-        rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = velocity;
+        this.direction = dir;
+        this.speed = speed;
+
+        // RigidBody2D will be grabbed in Start()
+        // Since Initialize() is not called by dead balls
+        // As such, we will cache direction & speed
+        // And calculate velocity during Update()
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -53,11 +69,11 @@ public class BallController : MonoBehaviour
         {
             if (collision.gameObject.name == "NorthWall" || collision.gameObject.name == "SouthWall")
             {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, -rb.linearVelocity.y);
+                direction = new Vector2(direction.x, -direction.y);
             }
             else // East/WestWall
             {
-                rb.linearVelocity = new Vector2(-rb.linearVelocity.x, rb.linearVelocity.y);
+                direction = new Vector2(-direction.x, direction.y);
             }
         }
     }
