@@ -51,7 +51,14 @@ public class BallController : MonoBehaviour
         // Ball-BallWall collisions
         else if (collision.gameObject.layer == LayerMask.NameToLayer("BallWalls"))
         {
-            // TODO
+            if (collision.gameObject.name == "NorthWall" || collision.gameObject.name == "SouthWall")
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, -rb.linearVelocity.y);
+            }
+            else // East/WestWall
+            {
+                rb.linearVelocity = new Vector2(-rb.linearVelocity.x, rb.linearVelocity.y);
+            }
         }
     }
 }
