@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BallController : MonoBehaviour
@@ -7,10 +8,12 @@ public class BallController : MonoBehaviour
     [SerializeField] private int maxBouncesTilDeath = 3;
     [SerializeField] private float minAliveSpeed = 4.0f;
     [SerializeField] private Sprite ballAliveSprite, ballDeadSprite;
+    [SerializeField] private float hitDamage = 10;
 
     private int bounces;
     private float speed;
     private Vector2 direction;
+    private GameObject thrownBy;
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -48,11 +51,12 @@ public class BallController : MonoBehaviour
 
     // Use Initialize() rather than Start() for setup
     // Since parameters will need to be passed
-    public void Initialize(bool isAlive, Vector2 dir, float speed)
+    public void Initialize(bool isAlive, Vector2 dir, float speed, GameObject thrownBy)
     {
         this.isAlive = isAlive;
         this.direction = dir;
         this.speed = speed;
+        this.thrownBy = thrownBy;
 
         // RigidBody2D will be grabbed in Start()
         // Since Initialize() is not called by dead balls
@@ -60,21 +64,46 @@ public class BallController : MonoBehaviour
         // And calculate velocity during Update()
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
         // Ball-GameChar collisions
-        if (collision.gameObject.layer == LayerMask.NameToLayer("GameChars"))
+        if (collider.gameObject.layer == LayerMask.NameToLayer("GameChars"))
         {
             // Deal damage and recoil
             if (isAlive)
             {
-                // TODO
+                // Prevent colliding with the thrower
+                if (bounces == 0 && thrownBy == collider.gameObject)
+                {
+                    return;
+                }
+
+                if (collider.gameObject.TryGetComponent<GameCharHealth>(out GameCharHealth gameCharHealth))
+                {
+                    gameCharHealth.Health = Mathf.Clamp(gameCharHealth.Health - hitDamage, 0, gameCharHealth.Health);
+                }
+
+                // Change ball direction
+                // Flip vertically if ball is above/below collider
+                if (transform.position.y > collider.gameObject.transform.position.y + collider.gameObject.transform.localScale.x / 2
+                    || transform.position.y < collider.gameObject.transform.position.y - collider.gameObject.transform.localScale.x / 2)
+                {
+                    Debug.Log("Hit from above/below.");
+                    direction = new Vector2(direction.x, -direction.y);
+                }
+                else
+                {
+                    Debug.Log("Hit from side.");
+                    direction = new Vector2(-direction.x, direction.y);
+                }
+
+                isAlive = false;
             }
 
             // Pickup ball
             else
             {
-                if (collision.gameObject.TryGetComponent<GameCharThrow>(out GameCharThrow gameCharThrow)
+                if (collider.gameObject.TryGetComponent<GameCharThrow>(out GameCharThrow gameCharThrow)
                     && !gameCharThrow.IsHoldingBall) // GameChar can only hold one ball at a time
                 {
                     gameCharThrow.IsHoldingBall = true;
@@ -84,10 +113,10 @@ public class BallController : MonoBehaviour
         }
 
         // Ball-BallWall collisions
-        else if (collision.gameObject.layer == LayerMask.NameToLayer("BallWalls"))
+        else if (collider.gameObject.layer == LayerMask.NameToLayer("BallWalls"))
         {
             bounces++;
-            if (collision.gameObject.name == "NorthWall" || collision.gameObject.name == "SouthWall")
+            if (collider.gameObject.name == "NorthWall" || collider.gameObject.name == "SouthWall")
             {
                 direction = new Vector2(direction.x, -direction.y);
             }

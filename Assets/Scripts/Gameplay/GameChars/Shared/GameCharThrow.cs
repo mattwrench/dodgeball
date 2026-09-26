@@ -55,7 +55,7 @@ public class GameCharThrow : MonoBehaviour
         GameObject newBall = Instantiate(ballAlivePrefab, transform.position, Quaternion.identity);
         if (newBall.TryGetComponent<BallController>(out BallController ballController))
         {
-            ballController.Initialize(true, dir, speed);
+            ballController.Initialize(true, dir, speed, gameObject);
         }
     }
 }
