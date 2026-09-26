@@ -172,3 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BallController
   isAlive: 0
   velocityDecayRate: 1.5
+  maxBouncesTilDeath: 3
+  minAliveSpeed: 4
+  ballAliveSprite: {fileID: 21300000, guid: b3f355269be875a4ea36618b139b9fb1, type: 3}
+  ballDeadSprite: {fileID: 21300000, guid: 34f4cb2cdce1aaf4eb105ae75c9afb7d, type: 3}

@@ -4,14 +4,23 @@ public class BallController : MonoBehaviour
 {
     [SerializeField] private bool isAlive;
     [SerializeField] private float velocityDecayRate = 1.5f; // Units / s^2
-    private Rigidbody2D rb;
+    [SerializeField] private int maxBouncesTilDeath = 3;
+    [SerializeField] private float minAliveSpeed = 4.0f;
+    [SerializeField] private Sprite ballAliveSprite, ballDeadSprite;
 
+    private int bounces;
     private float speed;
     private Vector2 direction;
 
+    private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
+
     private void Start()
     {
+        bounces = 0;
+
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -25,6 +34,16 @@ public class BallController : MonoBehaviour
 
         // Set velocity
         rb.linearVelocity = direction * speed;
+
+        // Kill balls
+        if (bounces >= maxBouncesTilDeath
+            || rb.linearVelocity.magnitude < minAliveSpeed)
+        {
+            isAlive = false;
+        }
+
+        // Set sprite
+        spriteRenderer.sprite = isAlive ? ballAliveSprite : ballDeadSprite;
     }
 
     // Use Initialize() rather than Start() for setup
@@ -67,6 +86,7 @@ public class BallController : MonoBehaviour
         // Ball-BallWall collisions
         else if (collision.gameObject.layer == LayerMask.NameToLayer("BallWalls"))
         {
+            bounces++;
             if (collision.gameObject.name == "NorthWall" || collision.gameObject.name == "SouthWall")
             {
                 direction = new Vector2(direction.x, -direction.y);
